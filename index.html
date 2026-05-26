@@ -487,63 +487,6 @@
         }
 
         /* ═══════════════════════════════════════
-           Gallery
-           ═══════════════════════════════════════ */
-        .gallery-section {
-            background: rgba(254,249,242,0.62);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border-radius: var(--radius-xl);
-            margin: 20px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.8rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-item {
-            border-radius: 20px;
-            overflow: hidden;
-            background: rgba(255,247,240,0.9);
-            box-shadow: var(--shadow-sm);
-            transition: transform .3s ease, box-shadow .3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
-            transition: transform .4s ease;
-        }
-
-        .gallery-item img.placeholder-fallback {
-            object-fit: contain;
-            padding: 20px;
-            opacity: 0.7;
-        }
-
-        .gallery-item:hover img:not(.placeholder-fallback) {
-            transform: scale(1.03);
-        }
-
-        .gallery-caption {
-            padding: 14px;
-            text-align: center;
-            font-style: italic;
-            color: #7C6A55;
-            font-size: .95rem;
-        }
-
-        /* ═══════════════════════════════════════
            Quote Form
            ═══════════════════════════════════════ */
         .quote-form {
@@ -868,15 +811,10 @@
             .hero {
                 padding: 50px 18px 60px;
             }
-            .gallery-section {
-                margin: 10px;
-                border-radius: 24px;
-            }
         }
 
         @media (max-width: 500px) {
-            .product-grid,
-            .gallery-grid {
+            .product-grid {
                 grid-template-columns: 1fr;
             }
             .section-padding {
@@ -973,7 +911,6 @@
         <ul class="nav-menu">
             <li><a href="#inicio"      class="nav-link">Inicio</a></li>
             <li><a href="#productos"   class="nav-link">Productos</a></li>
-            <li><a href="#fotografias" class="nav-link">Galería</a></li>
             <li><a href="#cotizacion"  class="nav-link">Cotización</a></li>
             <li><a href="#contacto"    class="nav-link">Contacto</a></li>
         </ul>
@@ -998,15 +935,6 @@
         <h2 id="productos-heading">Nuestros Productos</h2>
         <p style="margin-bottom:1.5rem;color:#5F5548;">Haz clic en cada imagen para ampliarla y ver los detalles.</p>
         <div class="product-grid" id="productGridContainer" role="list"></div>
-    </section>
-
-    <!-- ════════════════════════════════════════
-         Galería
-         ════════════════════════════════════════ -->
-    <section id="fotografias" class="section-padding gallery-section reveal reveal-delay-1" aria-labelledby="galeria-heading">
-        <h2 id="galeria-heading">Galería de Inspiración</h2>
-        <p style="margin-bottom:1.5rem;color:#5F5548;text-align:center;">La belleza de la piedra natural en cada detalle.</p>
-        <div class="gallery-grid" id="galleryReal" role="list"></div>
     </section>
 
     <!-- ════════════════════════════════════════
@@ -1135,16 +1063,6 @@
         { caption: "Cristo Cromado",                      img: "img/Cristo Cromado.jpg" }
     ];
 
-    // ── Gallery Images (temática piedra/mármol) ──
-    var galleryImages = [
-        { src:'https://images.unsplash.com/photo-1582555172866-f73bb9a7bdb5?w=400&h=280&fit=crop',  name:'Textura de mármol clásico' },
-        { src:'https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?w=400&h=280&fit=crop',  name:'Arte esculpido en piedra' },
-        { src:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=280&fit=crop',  name:'Elegancia en mármol blanco' },
-        { src:'https://images.unsplash.com/photo-1600607687939-ce8aadc7e4f8?w=400&h=280&fit=crop',  name:'Detalles que perduran' },
-        { src:'https://images.unsplash.com/photo-1504109914981-32e0e2e6f4d1?w=400&h=280&fit=crop',  name:'Arquitectura en piedra natural' },
-        { src:'https://images.unsplash.com/photo-1518531933037-91b2f5e2295b?w=400&h=280&fit=crop',  name:'Texturas únicas e irrepetibles' }
-    ];
-
     // ── Fallback placeholder ──
     var PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
         '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="280" viewBox="0 0 400 280">' +
@@ -1221,35 +1139,6 @@
         });
     }
 
-    // ════════════════════════════════════════
-    // Build Gallery
-    // ════════════════════════════════════════
-    function buildGallery() {
-        var container = document.getElementById('galleryReal');
-        if (!container) return;
-
-        galleryImages.forEach(function(item) {
-            var div = document.createElement('div');
-            div.className = 'gallery-item';
-            div.setAttribute('role', 'listitem');
-
-            var img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.name;
-            img.loading = 'lazy';
-            img.width = 400;
-            img.height = 280;
-            img.onerror = function() { handleImageError(this); };
-
-            var cap = document.createElement('div');
-            cap.className = 'gallery-caption';
-            cap.textContent = item.name;
-
-            div.appendChild(img);
-            div.appendChild(cap);
-            container.appendChild(div);
-        });
-    }
 
     // ════════════════════════════════════════
     // Small helper
@@ -1465,7 +1354,6 @@
     // ════════════════════════════════════════
     function init() {
         buildProductCards();
-        buildGallery();
         initVisitorCounter();
         initQuoteForm();
         initSmoothScroll();
