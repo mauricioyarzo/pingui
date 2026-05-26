@@ -40,7 +40,7 @@ pingui/
 
 ## 🌐 Ver en vivo
 
-[pingui-marmoleria.github.io](https://pingui-marmoleria.github.io/)
+[mauricioyarzo.github.io/pingui](https://mauricioyarzo.github.io/pingui/)
 
 ## 📞 Contacto
 
