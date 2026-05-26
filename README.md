@@ -40,7 +40,7 @@ pingui/
 
 ## 🌐 Ver en vivo
 
-[mauricioyarzo.github.io/pingui](https://mauricioyarzo.github.io/pingui/)
+[monicasanchez.github.io/pingui](https://monicasanchez.github.io/pingui/)
 
 ## 📞 Contacto
 
